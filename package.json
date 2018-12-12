@@ -20,6 +20,7 @@
   "homepage": "https://github.com/nathanielgrossman/minilab#readme",
   "dependencies": {
     "aws-sdk": "^2.374.0",
+    "mongoose": "^5.3.16",
     "sharp": "^0.21.1"
   }
 }
