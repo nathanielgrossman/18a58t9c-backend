@@ -1,0 +1,25 @@
+{
+  "name": "minilab",
+  "version": "0.0.1",
+  "description": "Lambda to receive image data, convert to .png and .webp, and save to s3.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": " zip -r minilab.zip ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanielgrossman/minilab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathanielgrossman/minilab/issues"
+  },
+  "homepage": "https://github.com/nathanielgrossman/minilab#readme",
+  "dependencies": {
+    "aws-sdk": "^2.374.0",
+    "sharp": "^0.21.1"
+  }
+}
