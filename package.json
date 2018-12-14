@@ -5,18 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": " zip -r 18a58t9c.zip ."
+    "build": " zip -9 -r 18a58t9c.zip ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nathanielgrossman/minilab.git"
+    "url": "git+https://github.com/nathanielgrossman/18a58t9c-backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nathanielgrossman/minilab/issues"
+    "url": "https://github.com/nathanielgrossman/18a58t9c-backend/issues"
   },
-  "homepage": "https://github.com/nathanielgrossman/minilab#readme",
+  "homepage": "https://github.com/nathanielgrossman/18a58t9c-backend#readme",
   "dependencies": {
     "aws-sdk": "^2.374.0",
     "mongoose": "^5.3.16",
