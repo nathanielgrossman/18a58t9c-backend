@@ -32,7 +32,7 @@ exports.handler = (event, context, callback) => {
         let filename = image._id;
 
         let encodedImage = event.data;
-        let decodedImage = Buffer.from(encodedImage, 'base64');
+        let decodedImage = Buffer.from(encodedImage);
 
         const sharpWebp = sharp(decodedImage).webp(webpOptions)
         const sharpJpg = sharp(decodedImage).jpeg(jpegOptions)

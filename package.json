@@ -1,12 +1,11 @@
 {
-  "name": "minilab",
+  "name": "18a58t9c-backend",
   "version": "0.0.1",
-  "description": "Lambda to receive image data, convert to .png and .webp, and save to s3.",
+  "description": "lambdas for 18a58t9c",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": " zip -r minilab.zip ."
+    "build": " zip -r 18a58t9c.zip ."
   },
   "repository": {
     "type": "git",
