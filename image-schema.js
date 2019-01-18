@@ -14,7 +14,8 @@ const imageSchema = new Schema({
   last_viewed: {
     type: Date,
     default: Date.now
-  }
+  },
+  color: String
 })
 
 module.exports = mongoose.model('Image', imageSchema);
