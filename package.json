@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/nathanielgrossman/18a58t9c-backend#readme",
   "dependencies": {
-    "mongoose": "^5.3.16"
+    "mongoose": "^7.0.4"
   }
 }

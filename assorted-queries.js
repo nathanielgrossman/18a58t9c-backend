@@ -1,12 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Image = require('./image-schema');
+const Image = require("./image-schema");
 
 function shuffle(array) {
-  let currentIndex = array.length, temporaryValue, randomIndex;
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
   while (0 !== currentIndex) {
-
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
@@ -23,54 +24,48 @@ function random(min, max) {
 }
 
 function removeDuplicates(myArr, prop) {
-    return myArr.filter((obj, pos, arr) => {
-        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
-    });
+  return myArr.filter((obj, pos, arr) => {
+    return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos;
+  });
 }
 
-function mostPopular() {
-  return new Promise((resolve, reject) => {
-    Image.find().sort({ views: 'desc' }).skip(random(0, 3)).limit(random(3, 5)).exec({}, (err, images) => {
-      if (err) reject(err);
-      resolve(images);
-    })
-  })
+async function mostPopular() {
+  const images = await Image.find()
+    .sort({ views: "desc" })
+    .skip(random(0, 3))
+    .limit(random(3, 5))
+    .exec();
+  return images;
 }
 
-function leastPopular() {
-  return new Promise((resolve, reject) => {
-    Image.find().sort({ views: 'asc' }).skip(random(0, 1)).limit(random(1, 3)).exec({}, (err, images) => {
-      if (err) reject(err);
-      resolve(images);
-    })
-  })
+async function leastPopular() {
+  const images = await Image.find()
+    .sort({ views: "asc" })
+    .skip(random(0, 1))
+    .limit(random(1, 3))
+    .exec();
+  return images;
 }
 
-function newest() {
-  return new Promise((resolve, reject) => {
-    Image.find().sort({ created_at: 'desc' }).limit(random(4, 7)).exec({}, (err, images) => {
-      if (err) reject(err);
-      resolve(images);
-    })
-  })
+async function newest() {
+  const images = await Image.find()
+    .sort({ created_at: "desc" })
+    .limit(random(4, 7))
+    .exec();
+  return images;
 }
 
-function viewedLeastRecent() {
-  return new Promise((resolve, reject) => {
-    Image.find().sort({ last_viewed: 'asc' }).limit(random(3, 5)).exec({}, (err, images) => {
-      if (err) reject(err);
-      resolve(images);
-    })
-  })
+async function viewedLeastRecent() {
+  const images = await Image.find()
+    .sort({ last_viewed: "asc" })
+    .limit(random(3, 5))
+    .exec();
+  return images;
 }
 
-function randomImages() {
-  return new Promise((resolve, reject) => {
-    Image.aggregate().sample(random(4,6)).exec((err, images) => {
-      if (err) reject(err);
-      resolve(images);
-    })
-  })
+async function randomImages() {
+  const images = await Image.aggregate().sample(random(4, 6)).exec();
+  return images;
 }
 
 function assortedQueries() {
@@ -80,16 +75,16 @@ function assortedQueries() {
       leastPopular,
       newest,
       viewedLeastRecent,
-      randomImages
-    ]
-    const promises = queries.map(query => query())
+      randomImages,
+    ];
+    const promises = queries.map((query) => query());
     Promise.all(promises)
-    .then(arrs => [].concat(...arrs))
-    .then(images => removeDuplicates(images, 'original'))
-    .then(uniqueImages => shuffle(uniqueImages))
-    .then(shuffledImages => resolve(shuffledImages))
-    .catch(err => console.log(err))
-  })
+      .then((arrs) => [].concat(...arrs))
+      .then((images) => removeDuplicates(images, "original"))
+      .then((uniqueImages) => shuffle(uniqueImages))
+      .then((shuffledImages) => resolve(shuffledImages))
+      .catch((err) => console.log(err));
+  });
 }
 
 module.exports = assortedQueries;
