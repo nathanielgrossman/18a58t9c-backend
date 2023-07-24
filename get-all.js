@@ -16,7 +16,7 @@ exports.handler = (event, context, callback) => {
       try {
         const count = await Image.count().exec();
         const images = await Image.find()
-          .sort({ $natural: -1 })
+          .sort({ created_at: "desc" })
           .skip(start)
           .limit(size)
           .exec();
